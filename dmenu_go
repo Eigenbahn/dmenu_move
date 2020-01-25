@@ -1,0 +1,53 @@
+#!/bin/bash
+
+export LC_ALL=C
+
+LIST_BOOKMARKS_FILE=~/.config/dmenu_move_bookmarks.set
+
+
+## ------------------------------------------------------------------------
+## GET CONF
+
+DEST=""
+
+ALIAS_LIST=$(awk '{
+if (index($0,"#")==1) {}
+else if (NF == 0) {}
+else {print $1}
+}' $LIST_BOOKMARKS_FILE)
+
+
+## ------------------------------------------------------------------------
+## RETRIEVE ASSOCIATED LOCATION
+
+DEST_ALIAS=$(echo "$ALIAS_LIST" | dmenu -i -p "move to>" -nb black -nf white -sf red)
+
+if [[ "$DEST_ALIAS" = "" ]]; then
+    # interupted by user
+    exit
+fi
+
+
+## ------------------------------------------------------------------------
+## RETRIEVE ASSOCIATED LOCATION
+
+DEST_ALIAS=$(echo "$DEST_ALIAS" | sed -e 's|/|\\/|')
+
+DEST=$(cat $LIST_BOOKMARKS_FILE | sort -u | awk ' $0 ~ /^'$DEST_ALIAS'/ {
+if (NF > 1) {$1="";print }
+else { print $1 }
+}' | head -1 | sed -e 's/^[ \t]*//')
+# NB: last sed is for removing leading whitespaces and tabs
+
+DEST=$(echo "$DEST" | sed -e "s|^~|$HOME|")
+
+
+## ------------------------------------------------------------------------
+## GO
+
+if [[ ! -d "$DEST" ]]; then
+    notify-send 'dmenu_go error' "dest folder $DEST not reachable"
+    exit 1
+fi
+
+nautilus --no-desktop "$DEST"
