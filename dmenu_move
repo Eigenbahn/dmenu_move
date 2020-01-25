@@ -7,7 +7,7 @@ UNDO_SCRIPT_FILE=~/.config/dmenu_move_undo.sh
 
 
 ## ------------------------------------------------------------------------
-## PROMPT
+## GET CONF
 
 SPECIAL_DESTS="UNDO"
 
@@ -19,6 +19,10 @@ else {print $1}
 
 ALIAS_LIST="${ALIAS_LIST}
 ${SPECIAL_DESTS}"
+
+
+## ------------------------------------------------------------------------
+## PROMPT
 
 DEST_ALIAS=$(echo "$ALIAS_LIST" | dmenu -i -p "move to>" -nb black -nf white -sf red)
 
@@ -41,7 +45,7 @@ fi
 ## ------------------------------------------------------------------------
 ## RETRIEVE ASSOCIATED LOCATION
 
-DEST_ALIAS=$(echo "$DEST_ALIAS" | sed -e 's|/|\\/|')
+DEST_ALIAS=$(echo "$DEST_ALIAS" | sed -e 's|/|\\/|g')
 
 DEST=$(cat $LIST_BOOKMARKS_FILE | sort -u | awk ' $0 ~ /^'$DEST_ALIAS'/ {
 if (NF > 1) {$1="";print }
@@ -75,5 +79,3 @@ for file in $NAUTILUS_SCRIPT_SELECTED_URIS; do
     mv -u "$file" "$DEST"
 done
 fi
-
-exit
