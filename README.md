@@ -55,7 +55,7 @@ Otherwise files will be moved there.
 
 In case of mistake, last operation can be reverted by calling _dmenu\_move_ with the special `UNDO` destination.
 
-It is also recommanded to bind a keyboard shortcut
+If you also installed _dmenu\_go_, you can press its shortcut anytime to select a destination to spawn a new Nautilus window to.
 
 ## Configuration
 
