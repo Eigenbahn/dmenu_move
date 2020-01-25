@@ -2,6 +2,8 @@
 
 Move files fast with Nautilus and dmenu.
 
+![demo](/demo.gif)
+
 
 ## Introduction
 
