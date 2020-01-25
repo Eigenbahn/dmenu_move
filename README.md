@@ -11,6 +11,8 @@ It allows user to move all selected files to a destination from a user-defined l
 
 The destination selection is achieved through [dmenu](https://tools.suckless.org/dmenu/) from [suckless.org](https://suckless.org/).
 
+An accompanying script, _dmenu\_go_, allows to open a new Nautilus window to one of destination in the same list.
+
 
 ## Installation
 
@@ -30,6 +32,16 @@ Restart nautilus for changes to take effect:
 
     $ nautilus -q
 
+You can also optionally install _dmenu\_go_ in your user _PATH_. We recommend dropping it in `~/.local/bin/`.
+
+Make it executable:
+
+    $ chmod 755 ~/.local/bin/dmenu_go
+
+Associate it to a keyboard shortcut. Go to `Settings` > `Keyboard Shortcuts`, all the way down and click on the `+` to add a custom shortcut.
+
+![gnome_shortcut_settings](/gnome_shortcut_settings.png)
+
 
 ## Usage
 
@@ -43,6 +55,7 @@ Otherwise files will be moved there.
 
 In case of mistake, last operation can be reverted by calling _dmenu\_move_ with the special `UNDO` destination.
 
+It is also recommanded to bind a keyboard shortcut
 
 ## Configuration
 
@@ -74,6 +87,14 @@ conf/chromium ~/.config/chromium/Default
  - awk
  - sed
  - dmenu (from package `suckless-tools` on Debian-based systems)
+ - GNOME / Nautilus (obviously)
+
+
+## Compatibility
+
+This documentation only talks about GNOME 3.
+
+But this script was originally made for GNOME 2. So I assume it should work just fine under [MATE](https://mate-desktop.org/).
 
 
 ## Implementation details
