@@ -15,6 +15,8 @@ The destination selection is achieved through [dmenu](https://tools.suckless.org
 
 An accompanying script, _dmenu\_go_, allows to open a new Nautilus window to one of destination in the same list.
 
+For more context, read the [accompanying blog post](https://www.eigenbahn.com/2020/01/25/gnome-shortcut-move-files).
+
 
 ## Installation
 
