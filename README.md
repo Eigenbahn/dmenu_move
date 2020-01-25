@@ -7,7 +7,7 @@ Move files fast with Nautilus and dmenu.
 
 ## Introduction
 
-_dmenu\_move_ is a Nautilus script, i.e. a custom scripted action for [Nautilus](https://wiki.gnome.org/action/show/Apps/Files?action=show&redirect=Apps%2FNautilus), GNOME file manager.
+_dmenu\_move_ is a Nautilus script, i.e. a custom scripted action for [Nautilus](https://wiki.gnome.org/action/show/Apps/Files?action=show&redirect=Apps%2FNautilus), the file manager under GNOME.
 
 It allows user to move all selected files to a destination from a user-defined list.
 
